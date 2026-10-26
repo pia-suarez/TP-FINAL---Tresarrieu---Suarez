@@ -3,8 +3,8 @@ import java.time.LocalDate;
 public final class Recepcionista extends Usuario{
     private Hotel hotel;
 
-    public Recepcionista(String nombreUsuario, String contrasenia, Hotel hotel) {
-        super(nombreUsuario, contrasenia);
+    public Recepcionista(String nombreUsuario, String contrasena, Hotel hotel) {
+        super(nombreUsuario, contrasena);
         this.hotel = hotel;
     }
 
@@ -20,5 +20,4 @@ public final class Recepcionista extends Usuario{
     public Reserva registrarReserva(String dni, int numeroHabitacion, LocalDate inicio, LocalDate fin) {
         return hotel.reservar(dni, numeroHabitacion, inicio, fin);
     }
-
 }

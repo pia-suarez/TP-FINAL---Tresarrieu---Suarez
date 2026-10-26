@@ -1,20 +1,18 @@
 public abstract class Usuario {
 
     private String nombreUsuario;
-    private String contrasenia;
+    private String contrasena;
 
-    public Usuario(String nombreUsuario, String contrasenia) {
+    public Usuario(String nombreUsuario, String contrasena) {
         this.nombreUsuario = nombreUsuario;
-        this.contrasenia = contrasenia;
+        this.contrasena = contrasena;
     }
 
     public abstract String getPermisos();
 
-    public boolean autenticar(String contrasenia){
-        return this.contrasenia.equals(contrasenia);
+    public boolean autenticar(String contrasena) {
+        return this.contrasena.equals(contrasena);
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
+    public String getNombreUsuario() { return nombreUsuario; }
 }

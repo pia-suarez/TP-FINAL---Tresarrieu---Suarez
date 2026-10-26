@@ -1,13 +1,15 @@
 public final class Doble extends Habitacion {
     private boolean camaMatrimonial;
 
-    public Doble(int numHab, double precioBase, EstadoHabitacion estado, boolean camaMatrimonial) {
-        super(numHab, precioBase, estado);
+    public Doble(int numero, double precioBase, boolean camaMatrimonial) {
+        super(numero, precioBase);
         this.camaMatrimonial = camaMatrimonial;
     }
 
     @Override
-    public double calcularPago() {
-        return 0;
+    public double calcularPrecio() {
+        return camaMatrimonial ? precioBase * 1.15 : precioBase * 1.05;
     }
+
+    public boolean tieneCamaMatrimonial() { return camaMatrimonial; }
 }

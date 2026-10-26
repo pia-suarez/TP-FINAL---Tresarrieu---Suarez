@@ -5,17 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6abf066-2ded-41ed-942d-6336effcbebe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Estadia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Hotel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IPago.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Inquilino.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Reserva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EstadoReserva.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Administrador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Doble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Doble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estadia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estadia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EstadoHabitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EstadoHabitacion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Habitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Habitacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IPago.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Individual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inquilino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inquilino.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Recepcionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Recepcionista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reserva.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Suite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Suite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Usuario.java" afterDir="false" />
     </list>
@@ -27,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>

@@ -1,34 +1,33 @@
 import java.util.Objects;
 
-public abstract class Habitacion implements IPago {
+public abstract class Habitacion {
 
-    private int numHab;
-    private double precioBase;
+    private int numero;
     private EstadoHabitacion estado;
+    private String motivo;
+    protected double precioBase;
 
-    public Habitacion(int numHab, double precioBase, EstadoHabitacion estado) {
-        this.numHab = numHab;
+    public Habitacion(int numero, double precioBase) {
+        this.numero = numero;
         this.precioBase = precioBase;
-        this.estado = estado;
+        this.estado = EstadoHabitacion.DISPONIBLE;
+        this.motivo = "";
     }
 
+    public abstract double calcularPrecio();
 
-    private void cambiarEstado(EstadoHabitacion estado){
-        this.estado = estado;
+    public void cambiarEstado(EstadoHabitacion nuevoEstado, String motivo) {
+        this.estado = nuevoEstado;
+        this.motivo = motivo;
     }
 
-    public int getNumHab() {
-        return numHab;
-    }
+    public int getNumero() { return numero; }
+    public EstadoHabitacion getEstado() { return estado; }
+    public String getMotivo() { return motivo; }
+    public double getPrecioBase() { return precioBase; }
 
     @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Habitacion that)) return false;
-        return numHab == that.numHab;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(numHab);
+    public String toString() {
+        return getClass().getSimpleName() + " #" + numero + " (" + estado + ")";
     }
 }
