@@ -1,6 +1,4 @@
-import java.util.Objects;
-
-public abstract class Habitacion {
+public abstract class Habitacion implements IPrecio {
 
     private int numero;
     private EstadoHabitacion estado;
@@ -13,8 +11,6 @@ public abstract class Habitacion {
         this.estado = EstadoHabitacion.DISPONIBLE;
         this.motivo = "";
     }
-
-    public abstract double calcularPrecio();
 
     public void cambiarEstado(EstadoHabitacion nuevoEstado, String motivo) {
         this.estado = nuevoEstado;
