@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6abf066-2ded-41ed-942d-6336effcbebe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/EstadoReserva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Conexion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Doble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Doble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estadia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estadia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EstadoHabitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EstadoHabitacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Habitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Habitacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IPago.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inquilino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inquilino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Recepcionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Recepcionista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Suite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Suite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -72,8 +60,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+        <option value="bundled-jdk-30f59d01ecdd-34e2839f716b-intellij.indexing.shared.core-IU-262.9437.185" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.9437.185" />
       </set>
     </attachedChunks>
   </component>

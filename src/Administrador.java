@@ -1,4 +1,4 @@
-public final class Administrador extends Usuario{
+public final class Administrador extends Usuario {
 
     public Administrador(String nombreUsuario, String contrasena) {
         super(nombreUsuario, contrasena);
@@ -16,4 +16,5 @@ public final class Administrador extends Usuario{
 
     public void hacerBackup() {
         System.out.println("Backup realizado por " + getNombreUsuario());
+    }
 }
