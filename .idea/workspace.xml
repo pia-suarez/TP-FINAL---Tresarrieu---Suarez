@@ -5,9 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6abf066-2ded-41ed-942d-6336effcbebe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Conexion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Excepcions/FechaInvalidaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Excepcions/HabitacionNoDisponibleException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Excepcions/HabitacionNoEncontradaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Excepcions/InquilinoDuplicadoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Excepcions/InquilinoNoEncontradoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Excepcions/OperacionInvalidaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Excepcions/PersistenciaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Excepcions/UsuarioNoAutorizadoException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Conexion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Doble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Doble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estadia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Estadia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EstadoHabitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enums/EstadoHabitacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EstadoReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enums/EstadoReserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Habitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Habitacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IPrecio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interfaces/IPrecio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Individual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inquilino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Inquilino.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Recepcionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Recepcionista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Reserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Suite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Suite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,9 +39,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -48,8 +71,10 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
@@ -77,5 +102,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

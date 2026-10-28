@@ -1,4 +1,6 @@
-public final class Individual extends Habitacion{
+package Clases;
+
+public final class Individual extends Habitacion {
     private boolean escritorio;
 
     public Individual(int numero, double precioBase, boolean escritorio) {

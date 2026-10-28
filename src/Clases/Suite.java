@@ -1,3 +1,5 @@
+package Clases;
+
 public final class Suite extends Habitacion {
     private boolean tieneJacuzzi;
 

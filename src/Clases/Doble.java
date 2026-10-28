@@ -1,3 +1,5 @@
+package Clases;
+
 public final class Doble extends Habitacion {
     private boolean camaMatrimonial;
 

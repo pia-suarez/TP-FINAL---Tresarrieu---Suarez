@@ -1,3 +1,5 @@
+package Clases;
+
 public final class Administrador extends Usuario {
 
     public Administrador(String nombreUsuario, String contrasena) {
@@ -10,7 +12,7 @@ public final class Administrador extends Usuario {
     }
 
     public Recepcionista crearUsuario(String nombreUsuario, String contrasena, Hotel hotel) {
-        System.out.println("Usuario '" + nombreUsuario + "' creado por " + getNombreUsuario());
+        System.out.println("Clases.Usuario '" + nombreUsuario + "' creado por " + getNombreUsuario());
         return new Recepcionista(nombreUsuario, contrasena, hotel);
     }
 

@@ -1,3 +1,9 @@
+package Clases;
+
+
+import Enums.EstadoHabitacion;
+import Enums.EstadoReserva;
+import Excepcions.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +27,10 @@ public class Hotel {
         habitaciones.put(h.getNumero(), h);
     }
 
-    public void agregarInquilino(Inquilino p) {
+    public void agregarInquilino(Inquilino p) throws InquilinoDuplicadoException {
+        if (inquilinos.containsKey(p.getDni())) {
+            throw new InquilinoDuplicadoException(p.getDni());
+        }
         inquilinos.put(p.getDni(), p);
     }
 
@@ -40,25 +49,37 @@ public class Hotel {
         return true;
     }
 
-    public Reserva reservar(String dni, int numeroHabitacion, LocalDate inicio, LocalDate fin) {
+    public Reserva reservar(String dni, int numeroHabitacion, LocalDate inicio, LocalDate fin)
+            throws InquilinoNoEncontradoException, HabitacionNoEncontradaException,
+            FechaInvalidaException, HabitacionNoDisponibleException {
+
         Inquilino p = inquilinos.get(dni);
         Habitacion h = habitaciones.get(numeroHabitacion);
-        if (p == null) throw new IllegalArgumentException("Inquilino inexistente: " + dni);
-        if (h == null) throw new IllegalArgumentException("Habitación inexistente: " + numeroHabitacion);
+        if (p == null) throw new InquilinoNoEncontradoException(dni);
+        if (h == null) throw new HabitacionNoEncontradaException(numeroHabitacion);
+        if (!fin.isAfter(inicio)) {
+            throw new FechaInvalidaException("La fecha de salida debe ser posterior a la de entrada.");
+        }
         if (!estaDisponible(numeroHabitacion, inicio, fin)) {
-            throw new IllegalStateException("La habitación " + numeroHabitacion + " no está disponible en esas fechas");
+            throw new HabitacionNoDisponibleException(numeroHabitacion,
+                    "está ocupada, reservada o en mantenimiento en ese período");
         }
         Reserva r = new Reserva(inicio, fin, h, p);
         reservas.add(r);
         return r;
     }
 
-    public Estadia checkIn(String dni, int numeroHabitacion) {
+    public Estadia checkIn(String dni, int numeroHabitacion)
+            throws InquilinoNoEncontradoException, HabitacionNoEncontradaException,
+            HabitacionNoDisponibleException {
+
         Inquilino p = inquilinos.get(dni);
         Habitacion h = habitaciones.get(numeroHabitacion);
-        if (p == null || h == null) throw new IllegalArgumentException("Inquilino o habitación inexistente");
+        if (p == null) throw new InquilinoNoEncontradoException(dni);
+        if (h == null) throw new HabitacionNoEncontradaException(numeroHabitacion);
         if (h.getEstado() != EstadoHabitacion.DISPONIBLE) {
-            throw new IllegalStateException("La habitación no está disponible para check-in");
+            throw new HabitacionNoDisponibleException(numeroHabitacion,
+                    "su estado actual es " + h.getEstado());
         }
         Estadia e = new Estadia(LocalDate.now(), h, p);
         h.cambiarEstado(EstadoHabitacion.OCUPADA, "Ocupada por " + p.getNombre());
@@ -66,7 +87,7 @@ public class Hotel {
         return e;
     }
 
-    public double checkOut(String dni, int numeroHabitacion) {
+    public double checkOut(String dni, int numeroHabitacion) throws OperacionInvalidaException {
         for (Estadia e : estadias) {
             if (e.estaAbierta()
                     && e.getInquilino().getDni().equals(dni)
@@ -76,7 +97,8 @@ public class Hotel {
                 return e.getPrecioTotal();
             }
         }
-        throw new IllegalStateException("No hay una estadía abierta para ese inquilino y habitación");
+        throw new OperacionInvalidaException(
+                "No hay una estadía abierta para ese inquilino y habitación.");
     }
 
     public Map<Integer, Habitacion> getHabitaciones() { return habitaciones; }

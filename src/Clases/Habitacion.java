@@ -1,3 +1,10 @@
+package Clases;
+
+import Enums.EstadoHabitacion;
+import Enums.EstadoReserva;
+import Interfaces.IPrecio;
+
+
 public abstract class Habitacion implements IPrecio {
 
     private int numero;

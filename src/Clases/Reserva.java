@@ -1,4 +1,9 @@
+package Clases;
+
 import java.time.LocalDate;
+import Enums.EstadoHabitacion;
+import Enums.EstadoReserva;
+
 
 public class Reserva {
 
@@ -10,7 +15,7 @@ public class Reserva {
 
     public Reserva(LocalDate fechaInicio, LocalDate fechaFin, Habitacion habitacion, Inquilino inquilino) {
         if (!fechaFin.isAfter(fechaInicio)) {
-            throw new IllegalArgumentException("La fecha de fin debe ser posterior a la de inicio");
+            throw new IllegalArgumentException("La fecha de fin debe ser posterior a la de inicio"); //
         }
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
