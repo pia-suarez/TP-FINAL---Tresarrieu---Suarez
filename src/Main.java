@@ -1,4 +1,4 @@
-import Clases.Conexion;
+import JDBC.Conexion;
 
 public static void main() {
 

@@ -1,9 +1,8 @@
 package Excepcions;
 
 /**
- * Se lanza cuando falla la lectura o escritura de archivos (JSON, texto o binario).
- * Envuelve la excepción original (IOException, etc.) como causa, para no perder
- * el rastro del error real.
+ Se lanza cuando falla la lectura o escritura de archivos (JDBC).
+ Envuelve la excepción original como causa, para no perder el rastro del error real.
  */
 public class PersistenciaException extends Exception {
 

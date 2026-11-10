@@ -1,41 +1,46 @@
 package Clases;
 
-
 import Enums.EstadoHabitacion;
 import Enums.EstadoReserva;
 import Excepcions.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
+/**
+ Clase principal del sistema: contiene la logica del negocio del hotel.
+ Delega el almacenamiento de habitaciones e inquilinos en GestorGenerico.
+ Las reservas y estadias se guardan en listas porque no tienen una clave natural de busqueda.
+ */
 public class Hotel {
-    private Map<Integer, Habitacion> habitaciones;
-    private Map<String, Inquilino> inquilinos;
+    private GestorGenerico<Integer, Habitacion> habitaciones;
+    private GestorGenerico<String, Inquilino> inquilinos;
     private List<Reserva> reservas;
     private List<Estadia> estadias;
 
     public Hotel() {
-        this.habitaciones = new HashMap<>();
-        this.inquilinos = new HashMap<>();
+        this.habitaciones = new GestorGenerico<>();
+        this.inquilinos = new GestorGenerico<>();
         this.reservas = new ArrayList<>();
         this.estadias = new ArrayList<>();
     }
 
-    public void agregarHabitacion(Habitacion h) {
-        habitaciones.put(h.getNumero(), h);
+    public void agregarHabitacion(Habitacion h) throws OperacionInvalidaException {
+        if (!habitaciones.agregar(h.getNumero(), h)) {
+            throw new OperacionInvalidaException(
+                    "Ya existe una habitación con el número " + h.getNumero());
+        }
     }
 
     public void agregarInquilino(Inquilino p) throws InquilinoDuplicadoException {
-        if (inquilinos.containsKey(p.getDni())) {
+        if (!inquilinos.agregar(p.getDni(), p)) {
             throw new InquilinoDuplicadoException(p.getDni());
         }
-        inquilinos.put(p.getDni(), p);
     }
 
     public boolean estaDisponible(int numeroHabitacion, LocalDate inicio, LocalDate fin) {
-        Habitacion h = habitaciones.get(numeroHabitacion);
+        Habitacion h = habitaciones.buscar(numeroHabitacion);
         if (h == null || h.getEstado() == EstadoHabitacion.MANTENIMIENTO) {
             return false;
         }
@@ -53,8 +58,8 @@ public class Hotel {
             throws InquilinoNoEncontradoException, HabitacionNoEncontradaException,
             FechaInvalidaException, HabitacionNoDisponibleException {
 
-        Inquilino p = inquilinos.get(dni);
-        Habitacion h = habitaciones.get(numeroHabitacion);
+        Inquilino p = inquilinos.buscar(dni);
+        Habitacion h = habitaciones.buscar(numeroHabitacion);
         if (p == null) throw new InquilinoNoEncontradoException(dni);
         if (h == null) throw new HabitacionNoEncontradaException(numeroHabitacion);
         if (!fin.isAfter(inicio)) {
@@ -73,8 +78,8 @@ public class Hotel {
             throws InquilinoNoEncontradoException, HabitacionNoEncontradaException,
             HabitacionNoDisponibleException {
 
-        Inquilino p = inquilinos.get(dni);
-        Habitacion h = habitaciones.get(numeroHabitacion);
+        Inquilino p = inquilinos.buscar(dni);
+        Habitacion h = habitaciones.buscar(numeroHabitacion);
         if (p == null) throw new InquilinoNoEncontradoException(dni);
         if (h == null) throw new HabitacionNoEncontradaException(numeroHabitacion);
         if (h.getEstado() != EstadoHabitacion.DISPONIBLE) {
@@ -101,8 +106,8 @@ public class Hotel {
                 "No hay una estadía abierta para ese inquilino y habitación.");
     }
 
-    public Map<Integer, Habitacion> getHabitaciones() { return habitaciones; }
-    public Map<String, Inquilino> getInquilinos() { return inquilinos; }
+    public Collection<Habitacion> getHabitaciones() { return habitaciones.listar(); }
+    public Collection<Inquilino> getInquilinos() { return inquilinos.listar(); }
     public List<Reserva> getReservas() { return reservas; }
     public List<Estadia> getEstadias() { return estadias; }
 }

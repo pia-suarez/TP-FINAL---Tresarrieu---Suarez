@@ -1,4 +1,4 @@
-package Clases;
+package JDBC;
 
 import com.sun.tools.javac.Main;
 
@@ -15,7 +15,7 @@ public class Conexion {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/midb", "root", "#13Abril2007");
 
-            System.out.println("Clases.Conexion establecida con exito");
+            System.out.println("JDBC.Conexion establecida con exito");
         } catch (ClassNotFoundException e) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
         } catch (SQLException e) {

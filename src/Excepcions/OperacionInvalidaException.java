@@ -1,9 +1,9 @@
 package Excepcions;
 
 /**
- * Se lanza cuando una operación no corresponde al estado actual
- * (ej: check-out sin check-in previo, check-in sin reserva vigente,
- * cancelar una reserva inexistente).
+ Se lanza cuando una operacion no corresponde al estado actual
+ (ej: check-out sin check-in previo, check-in sin reserva vigente,
+ cancelar una reserva inexistente).
  */
 public class OperacionInvalidaException extends Exception {
 

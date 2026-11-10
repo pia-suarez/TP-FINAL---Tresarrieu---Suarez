@@ -5,31 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6abf066-2ded-41ed-942d-6336effcbebe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Excepcions/FechaInvalidaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Excepcions/HabitacionNoDisponibleException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Excepcions/HabitacionNoEncontradaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Excepcions/InquilinoDuplicadoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Excepcions/InquilinoNoEncontradoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Excepcions/OperacionInvalidaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Excepcions/PersistenciaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Excepcions/UsuarioNoAutorizadoException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clases/GestorGenerico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Conexion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Doble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Doble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estadia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Estadia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EstadoHabitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enums/EstadoHabitacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EstadoReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enums/EstadoReserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Habitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Habitacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IPrecio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interfaces/IPrecio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inquilino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Inquilino.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JDBC/Conexion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Clases/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Excepcions/FechaInvalidaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepcions/FechaInvalidaException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Excepcions/HabitacionNoDisponibleException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepcions/HabitacionNoDisponibleException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Excepcions/OperacionInvalidaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepcions/OperacionInvalidaException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Excepcions/PersistenciaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepcions/PersistenciaException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Excepcions/UsuarioNoAutorizadoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepcions/UsuarioNoAutorizadoException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Recepcionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Recepcionista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Reserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Suite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Suite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +25,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
         <option value="Exception" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -61,27 +46,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Documents/Pia/facu/programacion/2do cuatri/progra 2/TP FINAL/TP FINAL - Tresarrieu - Suarez",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
