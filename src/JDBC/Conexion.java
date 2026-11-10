@@ -13,7 +13,7 @@ public class Conexion {
     public void createConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/midb", "root", "#13Abril2007");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tp_final", "progra2", "santosypia");
 
             System.out.println("JDBC.Conexion establecida con exito");
         } catch (ClassNotFoundException e) {
