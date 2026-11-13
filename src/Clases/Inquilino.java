@@ -25,4 +25,5 @@ public class Inquilino {
     public String getDni() { return dni; }
     public String getOrigen() { return origen; }
     public String getDomicilioOrigen() { return domicilioOrigen; }
+
 }

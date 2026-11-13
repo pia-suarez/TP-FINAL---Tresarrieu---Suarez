@@ -9,11 +9,21 @@ public class Estadia {
     private double precioTotal;
     private Habitacion habitacion;
     private Inquilino inquilino;
+    private int id;
 
     public Estadia(LocalDate checkIn, Habitacion habitacion, Inquilino inquilino) {
         this.checkIn = checkIn;
         this.habitacion = habitacion;
         this.inquilino = inquilino;
+    }
+
+    public Estadia(int id, LocalDate checkIn, LocalDate checkOut, Habitacion habitacion, Inquilino inquilino) {
+        this(checkIn, habitacion, inquilino);
+        this.id = id;
+        this.checkOut = checkOut;
+        if (checkOut != null) {
+            calcularTotal();   // el total no se guarda en la base: se recalcula
+        }
     }
 
     public double calcularTotal() {
@@ -35,4 +45,6 @@ public class Estadia {
     public double getPrecioTotal() { return precioTotal; }
     public Habitacion getHabitacion() { return habitacion; }
     public Inquilino getInquilino() { return inquilino; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 }

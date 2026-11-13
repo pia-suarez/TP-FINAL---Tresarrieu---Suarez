@@ -24,6 +24,22 @@ public abstract class Habitacion implements IPrecio {
         this.motivo = motivo;
     }
 
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void setEstado(EstadoHabitacion estado) {
+        this.estado = estado;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
+    public void setPrecioBase(double precioBase) {
+        this.precioBase = precioBase;
+    }
+
     public int getNumero() { return numero; }
     public EstadoHabitacion getEstado() { return estado; }
     public String getMotivo() { return motivo; }

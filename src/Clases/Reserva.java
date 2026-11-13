@@ -12,6 +12,7 @@ public class Reserva {
     private EstadoReserva estado;
     private Habitacion habitacion;
     private Inquilino inquilino;
+    private int id;
 
     public Reserva(LocalDate fechaInicio, LocalDate fechaFin, Habitacion habitacion, Inquilino inquilino) {
         if (!fechaFin.isAfter(fechaInicio)) {
@@ -24,9 +25,19 @@ public class Reserva {
         this.estado = EstadoReserva.ACTIVA;
     }
 
+    public Reserva(int id, LocalDate fechaInicio, LocalDate fechaFin, Habitacion habitacion,
+                   Inquilino inquilino, EstadoReserva estado) {
+        this(fechaInicio, fechaFin, habitacion, inquilino);
+        this.id = id;
+        this.estado = estado;
+    }
+
     public void cancelar() {
         this.estado = EstadoReserva.CANCELADA;
     }
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
     // Dos rangos [inicio, fin) se solapan si uno empieza antes de que el otro termine
     public boolean solapaCon(Reserva otra) {
