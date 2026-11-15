@@ -6,6 +6,7 @@ import JDBC.ConexionEstadia;
 import JDBC.ConexionHabitacion;
 import JDBC.ConexionInquilino;
 import JDBC.ConexionReserva;
+import JDBC.ConexionUsuario;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+
 interface AccionBD {
     void ejecutar() throws PersistenciaException;
 }
@@ -22,13 +24,14 @@ interface AccionBD {
 private final Scanner in = new Scanner(System.in);
 private final Hotel hotel = new Hotel();
 
-/** Usuarios del sistema indexados por nombre de usuario */
+/** Usuarios del sistema indexados por nombre de usuario (se cargan y se guardan en la base). */
 private final Map<String, Usuario> usuarios = new HashMap<>();
 
 private final ConexionHabitacion conHabitacion = new ConexionHabitacion();
 private final ConexionInquilino conInquilino = new ConexionInquilino();
 private final ConexionReserva conReserva = new ConexionReserva();
 private final ConexionEstadia conEstadia = new ConexionEstadia();
+private final ConexionUsuario conUsuario = new ConexionUsuario();
 
 /** true si se pudo cargar desde la base; recién ahí se intenta guardar los cambios. */
 private boolean usaBD = false;
@@ -36,9 +39,13 @@ private boolean usaBD = false;
 void main() {
     cargarDesdeBD();
 
-    // Usuario administrador inicial; el resto los crea él desde su menú.
-    Administrador admin = new Administrador("admin", "admin123");
-    usuarios.put(admin.getNombreUsuario(), admin);
+    // Si no hay ningún administrador (primera ejecución), se crea el inicial;
+    // el resto de los usuarios los crea él desde su menú.
+    if (!usuarios.containsKey("admin")) {
+        Administrador admin = new Administrador("admin", "admin123");
+        usuarios.put(admin.getNombreUsuario(), admin);
+        persistir(() -> conUsuario.guardar(admin));
+    }
 
     System.out.println("=== Sistema de administración de hotel ===");
     while (true) {
@@ -135,6 +142,7 @@ private void crearRecepcionista(Administrador admin) {
     String clave = leerTexto("Contraseña: ");
     Recepcionista r = admin.crearUsuario(nombre, clave, hotel);
     usuarios.put(nombre, r);
+    persistir(() -> conUsuario.guardar(r));
 }
 
 // ------------------------------------------------------------------
@@ -461,6 +469,9 @@ private void cargarDesdeBD() {
         }
         hotel.getReservas().addAll(conReserva.obtenerTodas(gestorInq, gestorHab));
         hotel.getEstadias().addAll(conEstadia.obtenerTodas(gestorInq, gestorHab));
+        for (Usuario u : conUsuario.obtenerTodos(hotel)) {
+            usuarios.put(u.getNombreUsuario(), u);
+        }
 
         usaBD = true;
         System.out.println("Datos cargados desde la base: " + hotel.getHabitaciones().size()

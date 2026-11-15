@@ -17,4 +17,5 @@ public abstract class Usuario {
     }
 
     public String getNombreUsuario() { return nombreUsuario; }
+    public String getContrasena() { return contrasena; }
 }
