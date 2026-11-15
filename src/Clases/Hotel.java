@@ -74,6 +74,21 @@ public class Hotel {
         return true;
     }
 
+    /**
+     Devuelve la reserva ACTIVA de esa habitación que cubre la fecha dada,
+     o null si no hay ninguna.
+     */
+    public Reserva reservaActivaEn(int numeroHabitacion, LocalDate fecha) {
+        for (Reserva r : reservas) {
+            if (r.getHabitacion().getNumero() == numeroHabitacion
+                    && r.getEstado() == EstadoReserva.ACTIVA
+                    && r.solapaCon(fecha, fecha.plusDays(1))) {
+                return r;
+            }
+        }
+        return null;
+    }
+
     public Reserva reservar(String dni, int numeroHabitacion, LocalDate inicio, LocalDate fin)
             throws InquilinoNoEncontradoException, HabitacionNoEncontradaException,
             FechaInvalidaException, HabitacionNoDisponibleException {
@@ -105,6 +120,11 @@ public class Hotel {
         r.cancelar();
     }
 
+    /**
+     Registra el ingreso de un pasajero a una habitación.
+     Si la habitación tiene una reserva activa para hoy hecha por otro pasajero, no se puede ocupar.
+     Si la reserva es del mismo pasajero, queda COMPLETADA.
+     */
     public Estadia checkIn(String dni, int numeroHabitacion)
             throws InquilinoNoEncontradoException, HabitacionNoEncontradaException,
             HabitacionNoDisponibleException {
@@ -117,9 +137,19 @@ public class Hotel {
             throw new HabitacionNoDisponibleException(numeroHabitacion,
                     "su estado actual es " + h.getEstado());
         }
+
+        Reserva reserva = reservaActivaEn(numeroHabitacion, LocalDate.now());
+        if (reserva != null && !reserva.getInquilino().getDni().equals(dni)) {
+            throw new HabitacionNoDisponibleException(numeroHabitacion,
+                    "está reservada por otro pasajero para hoy");
+        }
+
         Estadia e = new Estadia(LocalDate.now(), h, p);
         h.cambiarEstado(EstadoHabitacion.OCUPADA, "Ocupada por " + p.getNombre());
         estadias.add(e);
+        if (reserva != null) {
+            reserva.setEstado(EstadoReserva.COMPLETADA);
+        }
         return e;
     }
 

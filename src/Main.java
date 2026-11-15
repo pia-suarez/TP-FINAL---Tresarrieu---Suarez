@@ -247,13 +247,22 @@ private void cancelarReserva() {
 private void hacerCheckIn(Recepcionista rec) {
     String dni = leerTexto("DNI del pasajero: ");
     int numero = leerEntero("Número de habitación: ");
+
+    // Si el pasajero tenía una reserva para hoy, el check-in la deja COMPLETADA y hay que guardarla.
+    final Reserva reservaDeHoy = hotel.reservaActivaEn(numero, LocalDate.now());
     try {
         final Estadia e = rec.hacerCheckIn(dni, numero);
         persistir(() -> {
             conEstadia.guardar(e);
             conHabitacion.guardar(e.getHabitacion());
+            if (reservaDeHoy != null) {
+                conReserva.guardar(reservaDeHoy);
+            }
         });
         System.out.println("Check-in realizado en la habitación " + numero + ".");
+        if (reservaDeHoy != null) {
+            System.out.println("La reserva del pasajero quedó completada.");
+        }
     } catch (InquilinoNoEncontradoException | HabitacionNoEncontradaException
              | HabitacionNoDisponibleException e) {
         System.out.println("Error: " + e.getMessage());
