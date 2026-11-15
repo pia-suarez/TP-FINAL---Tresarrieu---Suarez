@@ -11,6 +11,8 @@ public final class Administrador extends Usuario {
         return "ADMIN: gestión de usuarios y backups";
     }
 
+    /** El administrador sí tiene permiso: crea un recepcionista que trabaja sobre el hotel dado. */
+    @Override
     public Recepcionista crearUsuario(String nombreUsuario, String contrasena, Hotel hotel) {
         System.out.println("Usuario '" + nombreUsuario + "' creado por " + getNombreUsuario());
         return new Recepcionista(nombreUsuario, contrasena, hotel);

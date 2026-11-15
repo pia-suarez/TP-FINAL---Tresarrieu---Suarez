@@ -44,6 +44,20 @@ public class ConexionUsuario {
         }
     }
 
+    /** Elimina el usuario con ese nombre de la base (si no existe no hace nada). */
+    public void eliminar(String nombreUsuario) throws PersistenciaException {
+        String sql = "DELETE FROM usuarios WHERE nombre_usuario = ?";
+
+        try (Connection conn = Conexion.obtener();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, nombreUsuario);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new PersistenciaException("Error al eliminar el usuario " + nombreUsuario, e);
+        }
+    }
+
     /**
      * Lee todos los usuarios y reconstruye la subclase correcta según la columna "tipo".
      * Recibe el hotel porque cada Recepcionista trabaja sobre el hotel del sistema.

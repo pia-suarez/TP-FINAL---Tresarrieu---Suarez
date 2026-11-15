@@ -95,12 +95,16 @@ private void menuAdministrador(Administrador admin) {
         System.out.println("2. Crear usuario recepcionista");
         System.out.println("3. Hacer backup");
         System.out.println("4. Listar habitaciones");
+        System.out.println("5. Listar usuarios y permisos");
+        System.out.println("6. Eliminar usuario");
         System.out.println("0. Cerrar sesión");
         switch (leerEntero("Opción: ")) {
             case 1 -> altaHabitacion();
             case 2 -> crearRecepcionista(admin);
             case 3 -> admin.hacerBackup();
             case 4 -> listarTodasLasHabitaciones();
+            case 5 -> listarUsuarios();
+            case 6 -> eliminarUsuario(admin);
             case 0 -> salir = true;
             default -> System.out.println("Opción inválida.");
         }
@@ -133,16 +137,48 @@ private void altaHabitacion() {
     }
 }
 
-private void crearRecepcionista(Administrador admin) {
+/** Recibe un Usuario (no un Administrador) para que el permiso lo decida el polimorfismo de crearUsuario. */
+private void crearRecepcionista(Usuario quien) {
     String nombre = leerTexto("Nombre de usuario nuevo: ");
     if (nombre.isEmpty() || usuarios.containsKey(nombre)) {
         System.out.println("El nombre está vacío o ya existe.");
         return;
     }
     String clave = leerTexto("Contraseña: ");
-    Recepcionista r = admin.crearUsuario(nombre, clave, hotel);
-    usuarios.put(nombre, r);
-    persistir(() -> conUsuario.guardar(r));
+    try {
+        Recepcionista r = quien.crearUsuario(nombre, clave, hotel);
+        usuarios.put(nombre, r);
+        persistir(() -> conUsuario.guardar(r));
+    } catch (UsuarioNoAutorizadoException e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+}
+
+private void listarUsuarios() {
+    System.out.println("\nUsuarios del sistema:");
+    for (Usuario u : usuarios.values()) {
+        System.out.println("- " + u.getNombreUsuario() + " | " + u.getPermisos());
+    }
+}
+
+private void eliminarUsuario(Administrador admin) {
+    listarUsuarios();
+    String nombre = leerTexto("Usuario a eliminar (vacío para volver): ");
+    if (nombre.isEmpty()) {
+        return;
+    }
+    Usuario u = usuarios.get(nombre);
+    if (u == null) {
+        System.out.println("No existe el usuario '" + nombre + "'.");
+        return;
+    }
+    if (u instanceof Administrador) {
+        System.out.println("No se pueden eliminar usuarios administradores.");
+        return;
+    }
+    usuarios.remove(nombre);
+    persistir(() -> conUsuario.eliminar(nombre));
+    System.out.println("Usuario '" + nombre + "' eliminado por " + admin.getNombreUsuario() + ".");
 }
 
 // ------------------------------------------------------------------
@@ -169,9 +205,9 @@ private void menuRecepcionista(Recepcionista rec) {
         switch (leerEntero("Opción: ")) {
             case 1 -> registrarPasajero();
             case 2 -> hacerReserva(rec);
-            case 3 -> cancelarReserva();
+            case 3 -> cancelarReserva(rec);
             case 4 -> hacerCheckIn(rec);
-            case 5 -> hacerCheckOut();
+            case 5 -> hacerCheckOut(rec);
             case 6 -> consultarDisponibilidad();
             case 7 -> listarOcupadas();
             case 8 -> listarPorEstado(EstadoHabitacion.DISPONIBLE, "Habitaciones disponibles");
@@ -216,7 +252,7 @@ private void hacerReserva(Recepcionista rec) {
     }
 }
 
-private void cancelarReserva() {
+private void cancelarReserva(Recepcionista rec) {
     List<Reserva> activas = new ArrayList<>();
     for (Reserva r : hotel.getReservas()) {
         if (r.getEstado() == EstadoReserva.ACTIVA) {
@@ -236,7 +272,7 @@ private void cancelarReserva() {
     }
     final Reserva r = activas.get(opcion - 1);
     try {
-        hotel.cancelarReserva(r);
+        rec.cancelarReserva(r);
         persistir(() -> conReserva.guardar(r));
         System.out.println("Reserva cancelada.");
     } catch (OperacionInvalidaException e) {
@@ -269,7 +305,7 @@ private void hacerCheckIn(Recepcionista rec) {
     }
 }
 
-private void hacerCheckOut() {
+private void hacerCheckOut(Recepcionista rec) {
     String dni = leerTexto("DNI del pasajero: ");
     int numero = leerEntero("Número de habitación: ");
 
@@ -283,7 +319,7 @@ private void hacerCheckOut() {
         }
     }
     try {
-        double total = hotel.checkOut(dni, numero);
+        double total = rec.hacerCheckOut(dni, numero);
         final Estadia cerrada = abierta;
         persistir(() -> {
             conEstadia.guardar(cerrada);
