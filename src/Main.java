@@ -101,7 +101,7 @@ private void menuAdministrador(Administrador admin) {
         switch (leerEntero("Opción: ")) {
             case 1 -> altaHabitacion();
             case 2 -> crearRecepcionista(admin);
-            case 3 -> admin.hacerBackup();
+            case 3 -> hacerBackup(admin);
             case 4 -> listarTodasLasHabitaciones();
             case 5 -> listarUsuarios();
             case 6 -> eliminarUsuario(admin);
@@ -179,6 +179,17 @@ private void eliminarUsuario(Administrador admin) {
     usuarios.remove(nombre);
     persistir(() -> conUsuario.eliminar(nombre));
     System.out.println("Usuario '" + nombre + "' eliminado por " + admin.getNombreUsuario() + ".");
+}
+
+/** Genera un archivo de texto con la fecha de hoy en el nombre, en la carpeta donde se ejecuta el programa. */
+private void hacerBackup(Administrador admin) {
+    String ruta = "backup_" + LocalDate.now() + ".txt";
+    try {
+        admin.hacerBackup(hotel, ruta);
+        System.out.println("Backup guardado en el archivo: " + ruta);
+    } catch (PersistenciaException e) {
+        System.out.println("Error: " + e.getMessage());
+    }
 }
 
 // ------------------------------------------------------------------
