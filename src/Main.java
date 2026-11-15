@@ -235,9 +235,13 @@ private void cancelarReserva() {
         return;
     }
     final Reserva r = activas.get(opcion - 1);
-    r.cancelar();
-    persistir(() -> conReserva.guardar(r));
-    System.out.println("Reserva cancelada.");
+    try {
+        hotel.cancelarReserva(r);
+        persistir(() -> conReserva.guardar(r));
+        System.out.println("Reserva cancelada.");
+    } catch (OperacionInvalidaException e) {
+        System.out.println("Error: " + e.getMessage());
+    }
 }
 
 private void hacerCheckIn(Recepcionista rec) {
@@ -334,7 +338,7 @@ private void listarNoDisponibles() {
 
 private void cambiarEstadoHabitacion() {
     int numero = leerEntero("Número de habitación: ");
-    final Habitacion hab = buscarHabitacion(numero);
+    final Habitacion hab = hotel.buscarHabitacion(numero);
     if (hab == null) {
         System.out.println("No existe la habitación " + numero + ".");
         return;
@@ -360,13 +364,7 @@ private void cambiarEstadoHabitacion() {
 
 private void informePasajero() {
     String dni = leerTexto("DNI del pasajero: ");
-    Inquilino p = null;
-    for (Inquilino i : hotel.getInquilinos()) {
-        if (i.getDni().equals(dni)) {
-            p = i;
-            break;
-        }
-    }
+    Inquilino p = hotel.buscarInquilino(dni);
     if (p == null) {
         System.out.println("No hay ningún pasajero con DNI " + dni + ".");
         return;
@@ -431,15 +429,6 @@ private String describirReserva(Reserva r) {
     return "Hab. " + r.getHabitacion().getNumero() + " | " + r.getInquilino().getNombre()
             + " (DNI " + r.getInquilino().getDni() + ") | "
             + r.getFechaInicio() + " a " + r.getFechaFin() + " | " + r.getEstado();
-}
-
-private Habitacion buscarHabitacion(int numero) {
-    for (Habitacion h : hotel.getHabitaciones()) {
-        if (h.getNumero() == numero) {
-            return h;
-        }
-    }
-    return null;
 }
 
 // ------------------------------------------------------------------

@@ -39,9 +39,29 @@ public class Hotel {
         }
     }
 
+    /** Devuelve la habitación con ese número, o null si no existe. */
+    public Habitacion buscarHabitacion(int numero) {
+        return habitaciones.buscar(numero);
+    }
+
+    /** Devuelve el inquilino con ese DNI, o null si no está registrado. */
+    public Inquilino buscarInquilino(String dni) {
+        return inquilinos.buscar(dni);
+    }
+
+    /**
+     Indica si la habitación se puede ocupar en el período [inicio, fin).
+     No está disponible si no existe, si está en mantenimiento, si tiene una reserva activa
+     que se solapa, o si hoy está ocupada y el período incluye el día de hoy
+     (no se conoce la fecha de salida del ocupante actual).
+     */
     public boolean estaDisponible(int numeroHabitacion, LocalDate inicio, LocalDate fin) {
         Habitacion h = habitaciones.buscar(numeroHabitacion);
         if (h == null || h.getEstado() == EstadoHabitacion.MANTENIMIENTO) {
+            return false;
+        }
+        LocalDate hoy = LocalDate.now();
+        if (h.getEstado() == EstadoHabitacion.OCUPADA && !inicio.isAfter(hoy) && fin.isAfter(hoy)) {
             return false;
         }
         for (Reserva r : reservas) {
@@ -65,6 +85,9 @@ public class Hotel {
         if (!fin.isAfter(inicio)) {
             throw new FechaInvalidaException("La fecha de salida debe ser posterior a la de entrada.");
         }
+        if (inicio.isBefore(LocalDate.now())) {
+            throw new FechaInvalidaException("La fecha de entrada no puede ser anterior a hoy.");
+        }
         if (!estaDisponible(numeroHabitacion, inicio, fin)) {
             throw new HabitacionNoDisponibleException(numeroHabitacion,
                     "está ocupada, reservada o en mantenimiento en ese período");
@@ -72,6 +95,14 @@ public class Hotel {
         Reserva r = new Reserva(inicio, fin, h, p);
         reservas.add(r);
         return r;
+    }
+
+    /** Cancela una reserva. Solo se pueden cancelar las reservas que están activas. */
+    public void cancelarReserva(Reserva r) throws OperacionInvalidaException {
+        if (r.getEstado() != EstadoReserva.ACTIVA) {
+            throw new OperacionInvalidaException("Solo se pueden cancelar reservas activas.");
+        }
+        r.cancelar();
     }
 
     public Estadia checkIn(String dni, int numeroHabitacion)
