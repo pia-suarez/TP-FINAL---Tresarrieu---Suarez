@@ -15,7 +15,7 @@ public class Inquilino {
     }
 
     public String generarInforme() {
-        return "Clases.Inquilino: " + nombre + "\n"
+        return "Inquilino: " + nombre + "\n"
                 + "DNI: " + dni + "\n"
                 + "Origen: " + origen + "\n"
                 + "Domicilio de origen: " + domicilioOrigen;

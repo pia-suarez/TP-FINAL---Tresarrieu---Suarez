@@ -371,10 +371,7 @@ private void informePasajero() {
         System.out.println("No hay ningún pasajero con DNI " + dni + ".");
         return;
     }
-    System.out.println("\nNombre: " + p.getNombre());
-    System.out.println("DNI: " + p.getDni());
-    System.out.println("Origen: " + p.getOrigen());
-    System.out.println("Domicilio de origen: " + p.getDomicilioOrigen());
+    System.out.println("\n" + p.generarInforme());
 
     System.out.println("Historial de estadías:");
     boolean hay = false;
