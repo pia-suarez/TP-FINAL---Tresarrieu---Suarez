@@ -1,7 +1,6 @@
 package JDBC;
 
 import Excepcions.PersistenciaException;
-import com.sun.tools.javac.Main;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -16,11 +15,11 @@ public class Conexion {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tp_final", "progra2", "santosypia");
 
-            System.out.println("JDBC.Conexion establecida con exito");
+            System.out.println("Conexion establecida con exito");
         } catch (ClassNotFoundException e) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
         } catch (SQLException e) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
             System.out.println("Error al conectar con la base de datos");
         }
     }
@@ -42,7 +41,7 @@ public class Conexion {
         try {
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
