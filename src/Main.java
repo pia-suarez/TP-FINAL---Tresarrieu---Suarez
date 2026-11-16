@@ -115,13 +115,13 @@ private void menuAdministrador(Administrador admin) {
 
 private void altaHabitacion() {
     System.out.println("Tipo: 1. Individual  2. Doble  3. Suite");
-    int tipo = leerEntero("Tipo: ");
+    int tipo = leerEnteroPositivo("Tipo: ");
     if (tipo < 1 || tipo > 3) {
         System.out.println("Tipo inválido.");
         return;
     }
     int numero = leerEntero("Número de habitación: ");
-    double precio = leerDouble("Precio base por noche: ");
+    double precio = leerDoublePositivo("Precio base por noche: ");
 
     final Habitacion h;
     switch (tipo) {
@@ -146,7 +146,7 @@ private void crearRecepcionista(Usuario quien) {
         System.out.println("El nombre está vacío o ya existe.");
         return;
     }
-    String clave = leerTexto("Contraseña: ");
+    String clave = leerTextoObligatorio("Contraseña: ");
     try {
         Recepcionista r = quien.crearUsuario(nombre, clave, hotel);
         usuarios.put(nombre, r);
@@ -612,5 +612,21 @@ private boolean leerSiNo(String mensaje) {
         if (r.equals("s")) return true;
         if (r.equals("n")) return false;
         System.out.println("Respondé s o n.");
+    }
+}
+
+private int leerEnteroPositivo(String mensaje) {
+    while (true) {
+        int n = leerEntero(mensaje);
+        if (n > 0) return n;
+        System.out.println("Debe ser un número mayor a 0.");
+    }
+}
+
+private double leerDoublePositivo(String mensaje) {
+    while (true) {
+        double d = leerDouble(mensaje);
+        if (d > 0) return d;
+        System.out.println("Debe ser mayor a 0.");
     }
 }

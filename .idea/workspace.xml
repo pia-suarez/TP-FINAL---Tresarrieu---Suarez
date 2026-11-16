@@ -5,24 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6abf066-2ded-41ed-942d-6336effcbebe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Clases/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Administrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Recepcionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Recepcionista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Clases/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Clases/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Excepcions/FechaInvalidaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepciones/FechaInvalidaException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Excepcions/HabitacionNoDisponibleException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepciones/HabitacionNoDisponibleException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Excepcions/HabitacionNoEncontradaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepciones/HabitacionNoEncontradaException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Excepcions/InquilinoDuplicadoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepciones/InquilinoDuplicadoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Excepcions/InquilinoNoEncontradoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepciones/InquilinoNoEncontradoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Excepcions/OperacionInvalidaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepciones/OperacionInvalidaException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Excepcions/PersistenciaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepciones/PersistenciaException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Excepcions/UsuarioNoAutorizadoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Excepciones/UsuarioNoAutorizadoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JDBC/Conexion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/ConexionEstadia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JDBC/ConexionEstadia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/ConexionHabitacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JDBC/ConexionHabitacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/ConexionInquilino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JDBC/ConexionInquilino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/ConexionReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JDBC/ConexionReserva.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JDBC/ConexionUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JDBC/ConexionUsuario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
