@@ -233,10 +233,10 @@ private void menuRecepcionista(Recepcionista rec) {
 }
 
 private void registrarPasajero() {
-    String nombre = leerTexto("Nombre y apellido: ");
-    String dni = leerTexto("DNI: ");
-    String origen = leerTexto("Origen (ciudad/país): ");
-    String domicilio = leerTexto("Domicilio de origen: ");
+    String nombre = leerTextoObligatorio("Nombre y apellido: ");
+    String dni = leerDni("DNI (solo números): ");
+    String origen = leerTextoObligatorio("Origen (ciudad/país): ");
+    String domicilio = leerTextoObligatorio("Domicilio de origen: ");
     final Inquilino p = new Inquilino(nombre, dni, origen, domicilio);
     try {
         hotel.agregarInquilino(p);
@@ -543,6 +543,28 @@ private void persistir(AccionBD accion) {
 private String leerTexto(String mensaje) {
     System.out.print(mensaje);
     return in.nextLine().trim();
+}
+
+/** Repite la pregunta hasta que se escriba algo (evita que un Enter de más deje campos vacíos). */
+private String leerTextoObligatorio(String mensaje) {
+    while (true) {
+        String texto = leerTexto(mensaje);
+        if (!texto.isEmpty()) {
+            return texto;
+        }
+        System.out.println("Este dato es obligatorio, no puede quedar vacío.");
+    }
+}
+
+/** Pide un DNI formado solo por dígitos. */
+private String leerDni(String mensaje) {
+    while (true) {
+        String dni = leerTexto(mensaje);
+        if (dni.matches("\\d+")) {
+            return dni;
+        }
+        System.out.println("El DNI debe tener solo números.");
+    }
 }
 
 private int leerEntero(String mensaje) {
