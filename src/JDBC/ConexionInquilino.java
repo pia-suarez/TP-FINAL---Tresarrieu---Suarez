@@ -1,7 +1,7 @@
 package JDBC;
 
 import Clases.Inquilino;
-import Excepcions.PersistenciaException;
+import Excepciones.PersistenciaException;
 
 import java.sql.*;
 import java.util.ArrayList;

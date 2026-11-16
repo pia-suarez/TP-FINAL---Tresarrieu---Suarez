@@ -1,4 +1,4 @@
-package Excepcions;
+package Excepciones;
 
 /**
  Se lanza cuando un usuario intenta realizar una accion que su tipo de

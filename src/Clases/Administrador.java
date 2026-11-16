@@ -1,6 +1,6 @@
 package Clases;
 
-import Excepcions.PersistenciaException;
+import Excepciones.PersistenciaException;
 
 import java.io.IOException;
 import java.io.PrintWriter;

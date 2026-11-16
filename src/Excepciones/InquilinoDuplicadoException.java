@@ -1,4 +1,4 @@
-package Excepcions;
+package Excepciones;
 
 /** Se lanza al intentar registrar un pasajero cuyo DNI ya existe en el sistema. */
 public class InquilinoDuplicadoException extends Exception {

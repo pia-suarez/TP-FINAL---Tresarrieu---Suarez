@@ -1,7 +1,7 @@
 import Clases.*;
 import Enums.EstadoHabitacion;
 import Enums.EstadoReserva;
-import Excepcions.*;
+import Excepciones.*;
 import JDBC.ConexionEstadia;
 import JDBC.ConexionHabitacion;
 import JDBC.ConexionInquilino;
@@ -97,6 +97,7 @@ private void menuAdministrador(Administrador admin) {
         System.out.println("4. Listar habitaciones");
         System.out.println("5. Listar usuarios y permisos");
         System.out.println("6. Eliminar usuario");
+        System.out.println("7. Ver cantidad de pasajeros");
         System.out.println("0. Cerrar sesión");
         switch (leerEntero("Opción: ")) {
             case 1 -> altaHabitacion();
@@ -105,6 +106,7 @@ private void menuAdministrador(Administrador admin) {
             case 4 -> listarTodasLasHabitaciones();
             case 5 -> listarUsuarios();
             case 6 -> eliminarUsuario(admin);
+            case 7 -> mostrarCantidadPasajeros();
             case 0 -> salir = true;
             default -> System.out.println("Opción inválida.");
         }
@@ -212,6 +214,7 @@ private void menuRecepcionista(Recepcionista rec) {
         System.out.println("10. Cambiar estado de una habitación (mantenimiento, limpieza, etc.)");
         System.out.println("11. Informe e historial de un pasajero");
         System.out.println("12. Listar reservas");
+        System.out.println("13. Ver cantidad de pasajeros");
         System.out.println("0.  Cerrar sesión");
         switch (leerEntero("Opción: ")) {
             case 1 -> registrarPasajero();
@@ -226,6 +229,7 @@ private void menuRecepcionista(Recepcionista rec) {
             case 10 -> cambiarEstadoHabitacion();
             case 11 -> informePasajero();
             case 12 -> listarReservas();
+            case 13 -> mostrarCantidadPasajeros();
             case 0 -> salir = true;
             default -> System.out.println("Opción inválida.");
         }
@@ -440,6 +444,11 @@ private void informePasajero() {
     if (!hay) {
         System.out.println("(sin estadías)");
     }
+}
+
+private void mostrarCantidadPasajeros() {
+    System.out.println("\nPasajeros registrados en el sistema: " + hotel.cantidadInquilinos());
+    System.out.println("Pasajeros alojados actualmente: " + hotel.cantidadAlojados());
 }
 
 private void listarReservas() {

@@ -1,4 +1,4 @@
-package Excepcions;
+package Excepciones;
 
 /** Se lanza cuando se busca un pasajero por DNI y no está registrado. */
 public class InquilinoNoEncontradoException extends Exception {

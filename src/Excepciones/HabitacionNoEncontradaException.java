@@ -1,4 +1,4 @@
-package Excepcions;
+package Excepciones;
 
 /** Se lanza cuando se busca una habitación por número y no existe en el hotel. */
 public class HabitacionNoEncontradaException extends Exception {

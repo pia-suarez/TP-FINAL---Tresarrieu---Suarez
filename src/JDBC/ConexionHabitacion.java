@@ -2,7 +2,7 @@ package JDBC;
 
 import Clases.*;
 import Enums.EstadoHabitacion;
-import Excepcions.PersistenciaException;
+import Excepciones.PersistenciaException;
 
 import java.sql.*;
 import java.util.ArrayList;

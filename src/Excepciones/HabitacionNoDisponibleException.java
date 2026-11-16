@@ -1,4 +1,4 @@
-package Excepcions;
+package Excepciones;
 
 /**
  Se lanza cuando se intenta reservar u ocupar una habitación que no está

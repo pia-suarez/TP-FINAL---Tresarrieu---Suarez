@@ -1,6 +1,6 @@
 package Clases;
 
-import Excepcions.UsuarioNoAutorizadoException;
+import Excepciones.UsuarioNoAutorizadoException;
 
 public abstract class Usuario {
 

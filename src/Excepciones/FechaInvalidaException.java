@@ -1,4 +1,4 @@
-package Excepcions;
+package Excepciones;
 
 /**
  Se lanza cuando las fechas de una reserva o estadía son inconsistentes

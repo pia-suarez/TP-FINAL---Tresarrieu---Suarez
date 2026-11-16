@@ -1,4 +1,4 @@
-package Excepcions;
+package Excepciones;
 
 /**
  Se lanza cuando una operacion no corresponde al estado actual

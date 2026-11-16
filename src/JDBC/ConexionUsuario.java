@@ -4,7 +4,7 @@ import Clases.Administrador;
 import Clases.Hotel;
 import Clases.Recepcionista;
 import Clases.Usuario;
-import Excepcions.PersistenciaException;
+import Excepciones.PersistenciaException;
 
 import java.sql.*;
 import java.util.ArrayList;

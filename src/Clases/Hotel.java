@@ -2,7 +2,7 @@ package Clases;
 
 import Enums.EstadoHabitacion;
 import Enums.EstadoReserva;
-import Excepcions.*;
+import Excepciones.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -165,6 +165,20 @@ public class Hotel {
         }
         throw new OperacionInvalidaException(
                 "No hay una estadía abierta para ese inquilino y habitación.");
+    }
+
+    public int cantidadInquilinos() {
+        return inquilinos.cantidad();
+    }
+
+    public int cantidadAlojados() {
+        int total = 0;
+        for (Estadia e : estadias) {
+            if (e.estaAbierta()) {
+                total++;
+            }
+        }
+        return total;
     }
 
     public Collection<Habitacion> getHabitaciones() { return habitaciones.listar(); }

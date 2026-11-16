@@ -1,6 +1,6 @@
 package JDBC;
 
-import Excepcions.PersistenciaException;
+import Excepciones.PersistenciaException;
 
 import java.sql.*;
 

@@ -1,6 +1,6 @@
 package Clases;
 
-import Excepcions.*;
+import Excepciones.*;
 
 import java.time.LocalDate;
 

@@ -1,7 +1,7 @@
 package JDBC;
 
 import Clases.*;
-import Excepcions.PersistenciaException;
+import Excepciones.PersistenciaException;
 
 import java.sql.*;
 import java.time.LocalDate;

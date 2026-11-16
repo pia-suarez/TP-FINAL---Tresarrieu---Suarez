@@ -1,4 +1,4 @@
-package Excepcions;
+package Excepciones;
 
 /**
  Se lanza cuando falla la lectura o escritura de archivos (JDBC).
