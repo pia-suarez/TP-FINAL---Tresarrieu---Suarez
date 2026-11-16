@@ -1,5 +1,9 @@
 package Clases;
 
+/**
+ * Pasajero del hotel: la persona que reserva y ocupa las habitaciones.
+ * El DNI es su identificador único dentro del sistema.
+ */
 public class Inquilino {
 
     private String nombre;
@@ -7,6 +11,7 @@ public class Inquilino {
     private String origen;
     private String domicilioOrigen;
 
+    /** Ojo con el orden de los parámetros: primero nombre y después DNI. */
     public Inquilino(String nombre, String dni, String origen, String domicilioOrigen) {
         this.nombre = nombre;
         this.dni = dni;
@@ -14,6 +19,7 @@ public class Inquilino {
         this.domicilioOrigen = domicilioOrigen;
     }
 
+    /** Informe del pasajero con los datos pedidos: nombre, DNI, origen y domicilio de origen. */
     public String generarInforme() {
         return "Inquilino: " + nombre + "\n"
                 + "DNI: " + dni + "\n"
