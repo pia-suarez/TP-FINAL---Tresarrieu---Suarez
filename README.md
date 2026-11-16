@@ -1,46 +1,58 @@
 # TP Final Programación II – Sistema de administración de un hotel
 
-Trabajo práctico de Tresarrieu y Suarez. Aplicación de consola en Java que administra las
-habitaciones, pasajeros, reservas y estadías de un hotel, con dos tipos de usuario
-(administrador y recepcionista). La persistencia se hace con **JDBC sobre MySQL**.
+**Autores:** Tresarrieu y Suarez
 
-## Requisitos
-- JDK 17 o superior
-- MySQL 8 (o compatible) corriendo en `localhost:3306`
-- Conector `mysql-connector-j` (el `.jar`)
+Programa de consola en Java que administra un hotel: habitaciones, pasajeros,
+reservas, check-in y check-out. Hay dos tipos de usuario: **administrador** y
+**recepcionista**. Los datos se guardan en una base de datos MySQL.
 
-## Puesta en marcha
-1. **Crear la base de datos.** Ejecutar el script como root:
-   ```
-   mysql -u root -p < sql/schema.sql
-   ```
-2. **Crear el usuario de MySQL** que usa la aplicación (usuario `progra2`, clave `santosypia`;
-   los comandos están al final de `sql/schema.sql`). Si se quiere otro usuario o clave, se
-   cambian en `src/JDBC/Conexion.java`.
-3. **Agregar el conector.** Copiar `mysql-connector-j-26.7.0.jar` dentro de la carpeta `lib/` del proyecto
-   (ver `lib/LEEME.txt`). IntelliJ ya lo busca ahí; si se usa otra versión del jar, ajustar
-   `.idea/libraries/mysql_connector_j_26_7_0.xml` o agregarlo a mano en
-   *File > Project Structure > Libraries*.
-4. **Ejecutar** la clase `Main`.
+## Qué necesitás tener instalado
+1. Java (JDK 17 o superior)
+2. MySQL 8, encendido en tu compu
+3. El archivo `mysql-connector-j-26.7.0.jar`, la librería que permite que Java
+   se conecte con MySQL
 
-Si ya tenían la tabla `usuarios` de una versión anterior, agregarle la columna de permisos:
-`ALTER TABLE usuarios ADD COLUMN permisos VARCHAR(200) NULL;`
+## Cómo ponerlo a funcionar
 
-Si la base no está disponible el sistema avisa y funciona en memoria (los datos se pierden al cerrar).
+### Paso 1 – Crear la base de datos (se hace una sola vez)
+1. Abrí **MySQL Workbench** (se instala junto con MySQL).
+2. Conectate con el usuario `root` (el administrador de MySQL) y la contraseña
+   que elegiste al instalarlo.
+3. Abrí el archivo `sql/schema.sql` y ejecutalo completo (botón del rayo).
 
-## Usuario inicial
-En la primera ejecución se crea el administrador `admin` / `admin123`. Desde su menú se crean
-los recepcionistas.
+Esto crea las tablas donde se guardan los datos. Al final de ese mismo archivo
+también se crea el usuario `progra2` (clave `santosypia`), que es el que usa el
+programa para entrar a MySQL. Si querés otro usuario o clave, se cambian en
+`src/JDBC/Conexion.java`.
 
-Las contraseñas se guardan en la base como hash SHA-256, nunca en texto plano. Si la base tiene
-usuarios de una versión anterior (con la contraseña en texto), se convierten solos al iniciar el programa.
+### Paso 2 – Agregar la librería
+Copiá el archivo `.jar` dentro de la carpeta `lib/`. Si IntelliJ no lo reconoce:
+*File > Project Structure > Libraries* y agregalo a mano.
 
-## Estructura del código
-| Paquete | Contenido |
+### Paso 3 – Ejecutar
+Abrí el proyecto en IntelliJ y corré la clase `Main`.
+
+## Primer ingreso
+El programa crea solo un administrador:
+- Usuario: `admin`
+- Contraseña: `admin123`
+
+Desde el menú del administrador se crean los recepcionistas.
+
+## Cosas a tener en cuenta
+- Si MySQL no está disponible, el programa avisa y funciona igual, pero los
+  datos se pierden al cerrarlo.
+- Las contraseñas se guardan encriptadas (SHA-256), nunca en texto plano, para
+  que nadie pueda leerlas mirando la base de datos.
+- Si ya tenían la tabla `usuarios` de una versión anterior, ejecutar:
+  `ALTER TABLE usuarios ADD COLUMN permisos VARCHAR(200) NULL;`
+
+## Organización del código
+| Carpeta | Qué contiene |
 |---|---|
-| `Clases` | Modelo y lógica de negocio (`Hotel`, `Habitacion` y subclases, `Reserva`, `Estadia`, `Inquilino`, `Usuario` y subclases, `GestorGenerico`) |
-| `Enums` | `EstadoHabitacion`, `EstadoReserva` |
+| `Clases` | Las clases principales: `Hotel`, `Habitacion` (y sus tipos), `Reserva`, `Estadia`, `Inquilino`, `Usuario` (y sus tipos), `GestorGenerico` |
+| `Enums` | Los estados posibles: `EstadoHabitacion`, `EstadoReserva` |
 | `Interfaces` | `IPrecio` |
-| `Excepcions` | Excepciones personalizadas |
-| `JDBC` | Acceso a MySQL (una clase por tabla) |
-| `Main` | Menús de consola |
+| `Excepcions` | Las excepciones propias del sistema |
+| `JDBC` | El código que habla con MySQL (una clase por tabla) |
+| `Main` | Los menús que ve el usuario en consola |
