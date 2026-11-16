@@ -31,3 +31,6 @@ bin/
 
 # Backups generados por el sistema
 backup_*.txt
+
+# Configuración personal del IDE (cambia en cada máquina y genera conflictos)
+.idea/workspace.xml
